@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Backend.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Backend.Controllers
 {
@@ -12,46 +13,96 @@ namespace Backend.Controllers
     [ApiController]
     public class BPressureController : Controller
     {
-        private BPressureContext _context;
+        private readonly BPressureContext _context;
 
         public BPressureController(BPressureContext context)
         {
             _context = context;
         }
+
         [HttpGet]
         public ActionResult<IEnumerable<BPressure>> Get()
         {
             return _context.BPressures.ToList();
         }
+
+        // GET: api/TodoItems/5
+        [HttpGet("{id}")]
+        public async Task<ActionResult<BPressure>> GetTodoItem(int id)
+        {
+            var todoItem = await _context.BPressures.FindAsync(id);
+
+            if (todoItem == null)
+            {
+                return NotFound();
+            }
+
+            return todoItem;
+        }
+
+        // POST: api/TodoItems
+        [HttpPost]
+        public async Task<ActionResult<BPressure>> PostTodoItem(BPressure todoItem)
+        {
+            _context.BPressures.Add(todoItem);
+            await _context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetTodoItem), new { id = todoItem.BPressureId }, todoItem);
+        }
+
+        // PUT: api/TodoItems/5
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutTodoItem(int id, BPressure todoItem)
+        {
+            if (id != todoItem.BPressureId)
+            {
+                return BadRequest();
+            }
+
+            _context.Entry(todoItem).State = EntityState.Modified;
+
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!TodoItemExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
+
+        // DELETE: api/TodoItems/5
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<BPressure>> DeleteTodoItem(int id)
+        {
+            var todoItem = await _context.BPressures.FindAsync(id);
+            if (todoItem == null)
+            {
+                return NotFound();
+            }
+
+            _context.BPressures.Remove(todoItem);
+            await _context.SaveChangesAsync();
+
+            return todoItem;
+        }
+
+        private bool TodoItemExists(int id) => 
+            _context.BPressures.Any(e => e.BPressureId == id);
+
         ~BPressureController()
         {
             _context.Dispose();
         }
 
-        /*[Route("api/[controller]")]
-        public IEnumerable<BPressure> GetAll()
-        {
-            return _context.BPressures.ToList();
-            /* return new List<BPressure> {
-                new BPressure {
-                    PressureId = 1,
-                    Systolic = "OI ss",
-                    Dyastolic = "FJD",
-                    MeanAraterial = "FSDCSD",
-                    Pressure = "sdsa dgff",
-                    SleepStatus = "si ASU",
-                    DyastolicEndpoint = "dlai f"
-                },
-                new BPressure {
-                    PressureId = 2,
-                    Systolic = "f OI ss",
-                    Dyastolic = "FJdfhD",
-                    MeanAraterial = "fdhfFSDCSD",
-                    Pressure = "sdfgdsa dgff",
-                    SleepStatus = "si ASUfgd",
-                    DyastolicEndpoint = "dlai fdfgd"
-                }
-            }; */
-        //}
     }
 }
