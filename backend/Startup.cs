@@ -45,6 +45,11 @@ namespace backend
 
             app.UseRouting();
 
+            app.UseCors(option => option.AllowAnyOrigin());
+            app.UseCors(option => option.AllowAnyHeader());
+            app.UseCors(option => option.AllowAnyMethod());
+            app.UseCors(option => option.AllowCredentials());
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

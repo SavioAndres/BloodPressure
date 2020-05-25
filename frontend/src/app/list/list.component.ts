@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { BpressureService } from '../services/bpressure.service';
+import { Bpressure } from '../models/bpressure';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-list',
@@ -7,9 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListComponent implements OnInit {
 
-  constructor() { }
+  bpressure = {} as Bpressure;
+  bpressures: Bpressure[];
 
-  ngOnInit(): void {
+  constructor(private  bpressureService: BpressureService) {}
+
+  ngOnInit() {
+    this.getCars();
+  }
+
+  getCars() {
+    this.bpressureService.getCars().subscribe((bpressures: Bpressure[]) => {
+      this.bpressures = bpressures;
+    });
+  }
+
+  // deleta um carro
+  deleteCar(bpressure: Bpressure) {
+    this.bpressureService.deleteCar(bpressure).subscribe(() => {
+      this.getCars();
+    });
   }
 
 }

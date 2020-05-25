@@ -1,2 +1,29 @@
-
-  <p>list works</p>
+<p>list works</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Valor</th>
+      <th scope="col">Ações</th>
+      <th scope="col">Nome</th>
+      <th scope="col">Valor</th>
+      <th scope="col">Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let car of bpressures">
+      <td>{{car.bPressureId}}</td>
+      <td>{{car.systolic}}</td>
+      <td>{{car.dyastolic}}</td>
+      <td>{{car.meanAraterial}}</td>
+      <td>{{car.pressure}}</td>
+      <td>{{car.sleepStatus}}</td>
+      <td>{{car.dyastolicEndpoint}}</td>
+      <td>
+        <button type="button" class="btn btn-warning btn-sm" (click)="editCar(car)">Editar</button>
+        <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteCar(car)">Deletar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
