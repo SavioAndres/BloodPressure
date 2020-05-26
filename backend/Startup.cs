@@ -31,6 +31,7 @@ namespace backend
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddControllers();
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,11 +46,16 @@ namespace backend
 
             app.UseRouting();
 
+            /*
             app.UseCors(option => option.AllowAnyOrigin());
             app.UseCors(option => option.AllowAnyHeader());
             app.UseCors(option => option.AllowAnyMethod());
             app.UseCors(option => option.AllowCredentials());
-
+            */
+            app.UseCors(
+                options => options.SetIsOriginAllowed(x => _ = true).AllowAnyMethod().AllowAnyHeader().AllowCredentials()
+            );
+            
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

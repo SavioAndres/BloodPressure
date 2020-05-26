@@ -21,7 +21,7 @@
       <td>{{car.sleepStatus}}</td>
       <td>{{car.dyastolicEndpoint}}</td>
       <td>
-        <button type="button" class="btn btn-warning btn-sm" (click)="editCar(car)">Editar</button>
+        <a routerLink="/change/{{car.bPressureId}}">Editar</a>
         <button type="button" class="btn btn-danger btn-sm ml-1" (click)="deleteCar(car)">Deletar</button>
       </td>
     </tr>

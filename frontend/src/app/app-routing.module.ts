@@ -10,8 +10,8 @@ const routes: Routes = [
 
   { path: 'index', component: IndexComponent},
   { path: 'list', component: ListComponent},
-  { path: 'list/:id', component: ListComponent},
-  { path: 'register', component: RegisterComponent}
+  { path: 'register', component: RegisterComponent},
+  { path: 'change/:id', component: RegisterComponent }
 
 ];
 

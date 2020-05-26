@@ -1,5 +1,67 @@
 <p>register works!</p>
-<mat-form-field class="example-full-width">
-  <mat-label>Favorite food</mat-label>
-  <input matInput />
-</mat-form-field>
+
+
+<div class="card add-car">
+  <h5 class="card-header">Adicionar/Atualizar carro</h5>
+  <div class="card-body">
+    <form id="add-form" (ngSubmit)="f.form.valid && saveCar(f)" #f="ngForm" novalidate>
+      <div class="form-group">
+        <label for="systolic">Modelo</label>
+        <input type="text" [(ngModel)]="bpressure.systolic" id="systolic" name="systolic" #systolic="ngModel" required
+          class="form-control" [ngClass]="{ 'is-invalid': f.submitted && systolic.invalid }"
+          placeholder="Digite o systolic">
+        <div *ngIf="f.submitted && systolic.invalid" class="invalid-feedback">
+          <div *ngIf="systolic.errors.required">Modelo é obrigatório</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="dyastolic">Cor</label>
+        <input type="text" [(ngModel)]="bpressure.dyastolic" id="dyastolic" name="dyastolic" #dyastolic="ngModel"
+          required class="form-control" [ngClass]="{ 'is-invalid': f.submitted && dyastolic.invalid }"
+          placeholder="Digite a dyastolic">
+        <div *ngIf="f.submitted && dyastolic.invalid" class="invalid-feedback">
+          <div *ngIf="dyastolic.errors.required">Cor é obrigatória</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="meanAraterial">Cor</label>
+        <input type="text" [(ngModel)]="bpressure.meanAraterial" id="meanAraterial" name="meanAraterial"
+          #meanAraterial="ngModel" required class="form-control"
+          [ngClass]="{ 'is-invalid': f.submitted && meanAraterial.invalid }" placeholder="Digite a meanAraterial">
+        <div *ngIf="f.submitted && meanAraterial.invalid" class="invalid-feedback">
+          <div *ngIf="meanAraterial.errors.required">Cor é obrigatória</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="pressure">Cor</label>
+        <input type="text" [(ngModel)]="bpressure.pressure" id="pressure" name="pressure" #pressure="ngModel" required
+          class="form-control" [ngClass]="{ 'is-invalid': f.submitted && pressure.invalid }"
+          placeholder="Digite a pressure">
+        <div *ngIf="f.submitted && pressure.invalid" class="invalid-feedback">
+          <div *ngIf="pressure.errors.required">Cor é obrigatória</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="sleepStatus">Cor</label>
+        <input type="text" [(ngModel)]="bpressure.sleepStatus" id="sleepStatus" name="sleepStatus"
+          #sleepStatus="ngModel" required class="form-control"
+          [ngClass]="{ 'is-invalid': f.submitted && sleepStatus.invalid }" placeholder="Digite a sleepStatus">
+        <div *ngIf="f.submitted && sleepStatus.invalid" class="invalid-feedback">
+          <div *ngIf="sleepStatus.errors.required">Cor é obrigatória</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="dyastolicEndpoint">Cor</label>
+        <input type="text" [(ngModel)]="bpressure.dyastolicEndpoint" id="dyastolicEndpoint" name="dyastolicEndpoint"
+          #dyastolicEndpoint="ngModel" required class="form-control"
+          [ngClass]="{ 'is-invalid': f.submitted && dyastolicEndpoint.invalid }"
+          placeholder="Digite a dyastolicEndpoint">
+        <div *ngIf="f.submitted && dyastolicEndpoint.invalid" class="invalid-feedback">
+          <div *ngIf="dyastolicEndpoint.errors.required">Cor é obrigatória</div>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-add-car">Salvar</button>
+      <button type="reset" class="btn btn-secondary btn-add-car" (click)="cleanForm(f)">Cancelar</button>
+    </form>
+  </div>
+</div>
