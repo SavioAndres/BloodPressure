@@ -12,6 +12,11 @@ export class ListComponent implements OnInit {
 
   bpressure = {} as Bpressure;
   bpressures: Bpressure[];
+  displayedColumns: string[] = [
+    'bPressureId', 'systolic', 'dyastolic', 
+    'meanAraterial', 'pressure', 'sleepStatus', 
+    'dyastolicEndpoint', 'Editar', 'Excluir'
+  ];
 
   constructor(private  bpressureService: BpressureService) {}
 
