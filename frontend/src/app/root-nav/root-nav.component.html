@@ -7,7 +7,6 @@
     <mat-nav-list>
       <a mat-list-item routerLink="/register" (click)="drawer.toggle()">Registrar</a>
       <a mat-list-item routerLink="/list" (click)="drawer.toggle()">Listar</a>
-      <a mat-list-item href="#">Link 3</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -20,7 +19,7 @@
         *ngIf="isHandset | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>frontend</span>
+      <span>Blood Pressure</span>
     </mat-toolbar>
     <!-- Add Content Here -->
     <div class="content">

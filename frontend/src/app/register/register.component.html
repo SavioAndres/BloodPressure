@@ -1,45 +1,63 @@
-<p>register works!</p>
-
+<h3>Registrar</h3>
+<mat-card style="height: 240px;">
+  
 <form (ngSubmit)="f.form.valid && saveCar(f)" #f="ngForm" novalidate>
-  <mat-form-field>
+  <mat-grid-list cols="2" rowHeight="6:1">
+    <mat-grid-tile>
+  <mat-form-field class="example-full-width">
     <mat-label>Systolic</mat-label>
     <input matInput [(ngModel)]="bpressure.systolic" id="systolic" name="systolic" #systolic="ngModel" required
     [ngClass]="{ 'is-invalid': f.submitted && systolic.invalid }"/>
   </mat-form-field>
+</mat-grid-tile>
 
-  <mat-form-field>
+<mat-grid-tile>
+  <mat-form-field class="example-full-width">
     <mat-label>Dyastolic</mat-label>
     <input matInput [(ngModel)]="bpressure.dyastolic" id="dyastolic" name="dyastolic" #dyastolic="ngModel"
           required [ngClass]="{ 'is-invalid': f.submitted && dyastolic.invalid }"/>
   </mat-form-field>
+</mat-grid-tile>
 
-  <mat-form-field>
+<mat-grid-tile>
+  <mat-form-field class="example-full-width">
     <mat-label>Mean Arterial</mat-label>
     <input matInput [(ngModel)]="bpressure.meanAraterial" id="meanAraterial" name="meanAraterial"
     #meanAraterial="ngModel" required
     [ngClass]="{ 'is-invalid': f.submitted && meanAraterial.invalid }"/>
   </mat-form-field>
+</mat-grid-tile>
 
-  <mat-form-field>
+<mat-grid-tile>
+  <mat-form-field class="example-full-width">
     <mat-label>Pressure</mat-label>
     <input matInput [(ngModel)]="bpressure.pressure" id="pressure" name="pressure" #pressure="ngModel" required
     [ngClass]="{ 'is-invalid': f.submitted && pressure.invalid }"/>
   </mat-form-field>
+</mat-grid-tile>
 
-  <mat-form-field>
+<mat-grid-tile>
+  <mat-form-field class="example-full-width">
     <mat-label>Sleep Status</mat-label>
     <input matInput [(ngModel)]="bpressure.sleepStatus" id="sleepStatus" name="sleepStatus"
     #sleepStatus="ngModel" required
     [ngClass]="{ 'is-invalid': f.submitted && sleepStatus.invalid }"/>
   </mat-form-field>
+</mat-grid-tile>
 
-  <mat-form-field>
+<mat-grid-tile>
+  <mat-form-field class="example-full-width">
     <mat-label>Dyastolic Endpoint</mat-label>
     <input matInput [(ngModel)]="bpressure.dyastolicEndpoint" id="dyastolicEndpoint" name="dyastolicEndpoint"
     #dyastolicEndpoint="ngModel" required
     [ngClass]="{ 'is-invalid': f.submitted && dyastolicEndpoint.invalid }"/>
   </mat-form-field>
+</mat-grid-tile>
 
+</mat-grid-list>
+<div class="btns-save">
   <button type="submit" mat-raised-button color="primary">Salvar</button>
   <button type="reset" mat-raised-button (click)="cleanForm(f)">Cancelar</button>
+</div>
 </form>
+</mat-card>

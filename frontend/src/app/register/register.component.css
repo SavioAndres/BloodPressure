@@ -1,9 +1,20 @@
 .example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-  }
-  
-  .example-full-width {
-    width: 100%;
-  }
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+  margin-left: 6px;
+  margin-right: 6px;
+}
+
+.btns-save {
+  position: relative;
+  float: right;
+}
+
+.btns-save button {
+  margin-left: 6px;
+}
